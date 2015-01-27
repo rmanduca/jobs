@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Where Are The Jobs?</title>
+    <link href="jobs/mapstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <!--<link rel="stylesheet" href="leaflet.css" />-->
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+   </head>
+  <body>
+    <div id = "overlay"></div>
+    <div id = "about"></div>
+    <div id="header">
+      <h1>
+        Where Are The Jobs?
+        <span class="subtitle">Employment in America, 2010</span>
+      </h1>
+    </div>
+    <div id="map">
+    </div>
+    <div id="footer">
+      <span>One Dot = One Job. </span><span style="color:#D93400">Manufacturing and Trade    </span><span> - </span><span style="color:#163CA8">Professions    </span><span> - </span><span style="color:#0D8A51">Healthcare, Education, and Government    </span><span> - </span><span style="color:#F0D038">Retail, Hospitality, and Other Services</span><p></p>
+      <span><a href="JavaScript:Void(0)" onclick="showabout()">About</a> - <a href="JavaScript:Void(0)" onclick="showfaq()">FAQ</a> - <a href="http://demographics.coopercenter.org/DotMap/index.html" target="_blank">Inspiration</a> - <a href="http://www.robertmanduca.com" target="_blank">Me</a>
+    </div>
+    <div id="togglebutton">
+      <span>Hide Labels</span>
+    </div>
+<a class="twitter-share-button"
+  href="https://twitter.com/share" data-size= "large" data-url = "http://www.robertmanduca.com/projects/jobs/jobs.html">
+Tweet
+</a>
+<script>
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script>
+
+  <script type="text/javascript" src="jobs/showabout.js"></script>
+
+  <script>
+var startingspots = [[44.971538,-93.170895],[41.875952,-87.631127],[34.05223420, -118.2436849],[39.73915360, -104.9847034],[42.331427,-83.0457538],[39.952335,-75.163789],[29.7628844,-95.3830615],[40.7142691,-74.0059729],[47.606857,-122.333504],[37.790001,-122.314965],[25.779798,-80.192696],[36.135657,-115.163026]];
+var stspot = Math.floor(Math.random()*12);
+
+        var map = L.map('map').setView([startingspots[stspot][0],startingspots[stspot][1]],12); //[42.633959,-82.20314]
+            L.tileLayer('http://www.robertmanduca.com/projects/jobs/tiles/tiles4/{z}/{x}/{y}.png', {
+            maxZoom: 12,
+            minZoom:4,
+            // tileSize:512,
+            errorTileUrl:'http://www.robertmanduca.com/projects/jobs/blank.png',
+            detectRetina: false,
+            attribution: 'Jobs: Map data from US Census <a href="http://lehd.ces.census.gov" target="_blank">LEHD</a>, ' +
+                'Imagery © <a href="http://www.robertmanduca.com" target="_blank">Robert Manduca</a>'
+                    }).addTo(map);
+            L.tileLayer('http://tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
+             maxZoom: 12,
+             minZoom:4,     
+             opacity:0.17,
+             attribution: 'Background: Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright" target="_blank">ODbL</a>.'         
+            }).addTo(map);
+          var labels = L.tileLayer('http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png', {
+           maxZoom: 12,
+           minZoom:4,     
+           opacity:0.7        
+          });
+          labels.addTo(map);
+        
+        var labeled = true;
+
+        function toggleLabelsStreet(map){
+          labeled = !labeled;
+          if (labeled){
+            labels.addTo(map);
+            $("#togglebutton").text("Hide Labels");
+          }
+          else{
+            map.removeLayer(labels);
+            $("#togglebutton").text("Show Labels");
+          }
+
+          }
+
+        $("#togglebutton").click(function() {toggleLabelsStreet(map);
+});
+
+$('#overlay').click(hideabout);
+
+    </script>
+
+
+
+  </body>
+</html>

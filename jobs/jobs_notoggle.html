@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Where Are The Jobs?</title>
+    <link href="mapstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <!--<link rel="stylesheet" href="leaflet.css" />-->
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+   </head>
+  <body>
+    <div id="header">
+      <h1>
+        Where Are The Jobs?
+        <span class="subtitle">Employment in America, 2010</span>
+      </h1>
+    </div>
+    <div id="map">
+    </div>
+    <div id="footer">
+      <span>One Dot = One Job. </span><span style="color:#D93400">Manufacturing and Trade    </span><span style="color:#163CA8">Professions    </span><span style="color:#0D8A51">Healthcare, Education, and Government    </span><span style="color:#F0D038">Retail, Hospitality, and Other Services</span><p></p>
+      <span><a href="http://www.robertmanduca.com">About/FAQ - </a><a href="http://demographics.coopercenter.org/DotMap/index.html">Inspiration</a>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([42.633959,-82.20314],6);
+            L.tileLayer('http://www.robertmanduca.com/projects/jobs/tiles/tiles4/{z}/{x}/{y}.png', {
+            maxZoom: 12,
+            minZoom:4,
+            // tileSize:512,
+            errorTileUrl:'http://www.robertmanduca.com/projects/jobs/blank.png',
+            detectRetina: false,
+            attribution: 'Jobs: Map data from US Census <a href="http://lehd.ces.census.gov">LEHD</a>, ' +
+                'Imagery © <a href="http://www.robertmanduca.com">Robert Manduca</a>'
+                    }).addTo(map);
+            L.tileLayer('http://tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
+             maxZoom: 12,
+             minZoom:4,     
+             opacity:0.17,
+             attribution: 'Background: Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'         
+            }).addTo(map);
+            L.tileLayer('http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png', {
+             maxZoom: 12,
+             minZoom:4,     
+             opacity:0.7        
+            }).addTo(map);
+
+    </script>
+
+
+
+  </body>
+</html>
