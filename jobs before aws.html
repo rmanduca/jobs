@@ -6,11 +6,7 @@
     <link href="jobs/mapstyle.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <!--<link rel="stylesheet" href="leaflet.css" />-->
-     <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
-      <!-- Add after Leaflet library -->
-      <script src="//cdn.maptiks.com/maptiks-leaflet.min.js"></script>
-      <script>maptiks.trackcode='7ffb9501-c87a-47fe-9faa-55729a8e97da';</script>
-
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    </head>
   <body>
@@ -25,7 +21,7 @@
     <div id="map">
     </div>
     <div id="footer">
-      <span>One Dot = One Job. </span><span style="color:#D93400">Manufacturing and Logistics    </span><span> - </span><span style="color:#163CA8">Professional Services    </span><span> - </span><span style="color:#0D8A51">Healthcare, Education, and Government    </span><span> - </span><span style="color:#F0D038">Retail, Hospitality, and Other Services</span><p></p>
+      <span>One Dot = One Job. </span><span style="color:#D93400">Manufacturing and Trade    </span><span> - </span><span style="color:#163CA8">Professional Services    </span><span> - </span><span style="color:#0D8A51">Healthcare, Education, and Government    </span><span> - </span><span style="color:#F0D038">Retail, Hospitality, and Other Services</span><p></p>
       <span><a href="JavaScript:Void(0)" onclick="showabout()">About</a> - <a href="JavaScript:Void(0)" onclick="showfaq()">FAQ</a> - <a href="http://demographics.coopercenter.org/DotMap/index.html" target="_blank">Inspiration</a> - <a href="http://www.robertmanduca.com" target="_blank">Me</a>
     </div>
     <div id="togglebutton">
@@ -40,23 +36,23 @@ var startingspots = [[44.971538,-93.170895],[41.875952,-87.631127],[34.05223420,
 var stspot = Math.floor(Math.random()*13);
 
         var map = L.map('map').setView([startingspots[stspot][0],startingspots[stspot][1]],12); //[42.633959,-82.20314]
-            L.tileLayer('http://jobmaptiles.s3-website-us-east-1.amazonaws.com/tiles/{z}/{x}/{y}.png', {
-            maxZoom: 13,
+            L.tileLayer('http://www.robertmanduca.com/projects/jobs/tiles/tiles4/{z}/{x}/{y}.png', {
+            maxZoom: 12,
             minZoom:4,
             // tileSize:512,
             errorTileUrl:'http://www.robertmanduca.com/projects/jobs/blank.png',
             detectRetina: false,
             attribution: 'Jobs: Map data from US Census <a href="http://lehd.ces.census.gov" target="_blank">LEHD</a>, ' +
-                'Imagery by <a href="http://www.robertmanduca.com" target="_blank">Robert Manduca</a> under <a href="http://creativecommons.org/licenses/by/4.0" target="_blank">CC BY 4.0</a>'
+                'Imagery © <a href="http://www.robertmanduca.com" target="_blank">Robert Manduca</a>'
                     }).addTo(map);
             L.tileLayer('http://tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
-             maxZoom: 13,
+             maxZoom: 12,
              minZoom:4,     
              opacity:0.17,
              attribution: 'Background: Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright" target="_blank">ODbL</a>.'         
             }).addTo(map);
           var labels = L.tileLayer('http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png', {
-           maxZoom: 13,
+           maxZoom: 12,
            minZoom:4,     
            opacity:0.7        
           });

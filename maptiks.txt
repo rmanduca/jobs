@@ -1,0 +1,6 @@
+<script src="//cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+<!-- Add after Leaflet library -->
+<script src="//cdn.maptiks.com/maptiks-leaflet.min.js"></script>
+<script>maptiks.trackcode='7ffb9501-c87a-47fe-9faa-55729a8e97da';</script>
+<!-- Add before Leaflet application code -->
+<script src="/path/to/map/code.js"></script>
